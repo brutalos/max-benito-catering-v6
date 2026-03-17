@@ -1,26 +1,53 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: #f9f3ed;
+  --color-foreground: #163455;
+  --color-primary: #163455;
+  --color-accent: #ec624e;
+  --color-light: #ffffff;
+  --color-dark: #163455;
+  --font-sans: "Jost", ui-sans-serif, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@font-face {
+  font-display: swap;
+  font-family: "Jost";
+  src: url("/fonts/jost-v15-latin-regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 300;
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Jost";
+  src: url("/fonts/jost-v15-latin-500.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+}
+
+html {
+  font-family: "Jost", sans-serif;
+  font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-size: 1.8rem;
+  line-height: 1.4;
+  letter-spacing: 0.025em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.uc {
+  text-transform: uppercase;
+}
+
+.row {
+  width: 90%;
+  max-width: 1525px;
+  margin: 0 auto;
 }
