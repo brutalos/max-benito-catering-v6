@@ -13,6 +13,8 @@ const Footer: React.FC = () => {
           <a className="hover:text-accent transition-colors mt-2 md:mt-0 inline-block" href="mailto:job@maxbenito.at">job@maxbenito.at</a>
           <span className="mx-3 text-primary/30">|</span>
           <a className="hover:text-accent transition-colors mt-2 md:mt-0 inline-block" href="mailto:feedback@maxbenito.at">feedback@maxbenito.at</a>
+          <span className="mx-3 text-primary/30">|</span>
+          <a className="hover:text-accent transition-colors mt-2 md:mt-0 inline-block font-medium" href="/admin">Admin Dashboard</a>
         </p>
       </div>
     </footer>

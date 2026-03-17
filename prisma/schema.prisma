@@ -1,0 +1,65 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-arm64-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id          String      @id @default(cuid())
+  name        String
+  description String
+  price       Float
+  image       String
+  category    String?
+  orderItems  OrderItem[]
+}
+
+model Courier {
+  id     String  @id @default(cuid())
+  name   String
+  phone  String
+  status String  @default("AVAILABLE")
+  orders Order[]
+}
+
+model Order {
+  id                    String      @id @default(cuid())
+  createdAt             DateTime    @default(now())
+  updatedAt             DateTime    @updatedAt
+  status                String      @default("PENDING")
+  totalAmount           Float
+  customerName          String
+  customerEmail         String
+  customerPhone         String
+  customerStreet        String?
+  customerCity          String?
+  customerPostCode      String?
+  customerLat           Float?
+  customerLon           Float?
+  dropoffComment        String?
+  stripePaymentIntentId String?     @unique
+  woltPromiseId         String?
+  woltOrderRefId        String?
+  woltTrackingUrl       String?
+  deliveryStatus        String?
+  deliveryFee           Float?
+  scheduledDeliveryTime DateTime?
+  courierId             String?
+  courier               Courier?    @relation(fields: [courierId], references: [id])
+  items                 OrderItem[]
+}
+
+model OrderItem {
+  id        String  @id @default(cuid())
+  orderId   String
+  productId String
+  quantity  Int
+  price     Float
+  options   String?
+  product   Product @relation(fields: [productId], references: [id])
+  order     Order   @relation(fields: [orderId], references: [id])
+}
